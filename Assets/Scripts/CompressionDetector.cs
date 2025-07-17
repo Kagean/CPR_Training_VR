@@ -29,7 +29,7 @@ public class CompressionDetector : MonoBehaviour
             }
             else
             {
-                feedbackRenderer.material.color = Color.red;
+                feedbackRenderer.material.color = Color.white;
                 Debug.Log(" X Hatalý Derinlik: " + depth.ToString("F2") + " m");
             }
 
@@ -39,7 +39,7 @@ public class CompressionDetector : MonoBehaviour
         {
             if (isCompressing)
             {
-                feedbackRenderer.material.color = Color.white;
+                feedbackRenderer.material.color = Color.blue;
                 isCompressing = false;
             }
         }
