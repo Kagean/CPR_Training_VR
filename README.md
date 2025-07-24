@@ -2,6 +2,14 @@
 
 - CPR Training VR is a virtual reality application designed to teach and simulate the basics of Cardiopulmonary Resuscitation (CPR). Built as an interactive training tool, this project allows users to practice correct CPR techniques in a safe and immersive environment.
 
+  **V0.0.9    (24.07.2025)**
+
+**NEW**
+
+- Added new UI style. Removed old one.
+
+- Added monitor model to put UI.
+  
   **V0.0.8    (21.07.2025)**
 
 **NEW**
