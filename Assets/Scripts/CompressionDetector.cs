@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 public class CompressionDetector : MonoBehaviour
@@ -30,7 +30,7 @@ public class CompressionDetector : MonoBehaviour
             {
                 feedbackRenderer.material.color = Color.green;
 
-                // Ritim kontrol� burada
+                // Ritim kontrolü burada
                 if (!wasCompressing)
                 {
                     float now = Time.time;
@@ -84,7 +84,7 @@ public class CompressionDetector : MonoBehaviour
             else if (bpm < 100)
                 bpmText.color = Color.red;
             else
-                bpmText.color = new Color(1f, 0.5f, 0f); // turuncu
+                bpmText.color = new Color(1f, 0.5f, 0f);
         }
 
         Debug.Log("BPM: " + bpm);
