@@ -9,13 +9,18 @@ public class CompressionDetector : MonoBehaviour
     public float maxDepth = 0.065f;
     public Transform chestSurface;
     public Renderer feedbackRenderer;
-    public TMPro.TextMeshProUGUI bpmText; // UI feedback (optional)
+    public TMPro.TextMeshProUGUI bpmText;
 
     private float lastCompressionTime = 0f;
     private List<float> compressionIntervals = new List<float>();
-    private float minInterval = 0.5f; // 120 bpm
-    private float maxInterval = 0.6f; // 100 bpm
     private bool wasCompressing = false;
+    private float bpmDisplayTimeout = 3f;
+
+    // Renk sabitleme (debounce)
+    private Color currentColor = Color.white;
+    private Color targetColor = Color.white;
+    private float colorChangeDelay = 0.2f;
+    private float colorChangeTimer = 0f;
 
     void Update()
     {
@@ -28,9 +33,8 @@ public class CompressionDetector : MonoBehaviour
 
             if (depth >= minDepth && depth <= maxDepth)
             {
-                feedbackRenderer.material.color = Color.green;
+                targetColor = Color.green;
 
-                // Ritim kontrolü burada
                 if (!wasCompressing)
                 {
                     float now = Time.time;
@@ -55,21 +59,40 @@ public class CompressionDetector : MonoBehaviour
                     wasCompressing = true;
                 }
             }
-            else if (depth >= -0.01f && depth <= 0.01f)
-            {
-                feedbackRenderer.material.color = Color.blue;
-                wasCompressing = false;
-            }
             else
             {
-                feedbackRenderer.material.color = Color.red;
+                // Eller temas ediyor ama basınç yok (hazır bekleme)
+                targetColor = Color.red;
                 wasCompressing = false;
             }
         }
         else
         {
-            feedbackRenderer.material.color = Color.white;
+            targetColor = Color.white;
             wasCompressing = false;
+
+            // Uzun süre basılmadıysa BPM'i gizle
+            if (lastCompressionTime > 0 && Time.time - lastCompressionTime > bpmDisplayTimeout)
+            {
+                HideBPM();
+                compressionIntervals.Clear();
+            }
+        }
+
+        // Renk geçişini yavaşlat (debounce logic)
+        if (feedbackRenderer.material.color != targetColor)
+        {
+            colorChangeTimer += Time.deltaTime;
+
+            if (colorChangeTimer >= colorChangeDelay)
+            {
+                feedbackRenderer.material.color = targetColor;
+                colorChangeTimer = 0f;
+            }
+        }
+        else
+        {
+            colorChangeTimer = 0f;
         }
     }
 
@@ -84,10 +107,19 @@ public class CompressionDetector : MonoBehaviour
             else if (bpm < 100)
                 bpmText.color = Color.red;
             else
-                bpmText.color = new Color(1f, 0.5f, 0f);
+                bpmText.color = new Color(1f, 0.5f, 0f); // turuncu
         }
 
         Debug.Log("BPM: " + bpm);
+    }
+
+    void HideBPM()
+    {
+        if (bpmText != null)
+        {
+            bpmText.text = "0 BPM";
+            bpmText.color = Color.white;
+        }
     }
 
     bool IsHandTouchingChestZone(Transform hand)

@@ -16,8 +16,8 @@ public class CompressionUI : MonoBehaviour
         float roundedDepth = Mathf.Round(depth * 1000f) / 10f;
 
         debugText.text =
-            "Sol Mesafe: " + leftDistance.ToString("F2") + " m\n" +
-            "Sað Mesafe: " + rightDistance.ToString("F2") + " m\n" +
-            "Derinlik: " + depth.ToString("F2") + " m";
+            "LeftDistance: " + leftDistance.ToString("F2") + " m\n" +
+            "RightDistance: " + rightDistance.ToString("F2") + " m\n" +
+            "Depth: " + depth.ToString("F2") + " m";
     }
 }
