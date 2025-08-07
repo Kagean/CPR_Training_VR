@@ -2,6 +2,16 @@
 
 - CPR Training VR is a virtual reality application designed to teach and simulate the basics of Cardiopulmonary Resuscitation (CPR). Built as an interactive training tool, this project allows users to practice correct CPR techniques in a safe and immersive environment.
 
+  **V0.0.10    (07.08.2025)**
+
+**NEW**
+
+- Added touching Phycsis.
+
+- Added Test scene.
+
+- Added SoftBody Phycsis. (still under construction)
+
   **V0.0.9    (24.07.2025)**
 
 **NEW**
@@ -26,7 +36,7 @@
 
 - New methods have been developed for the compression system.
 
-- upper body deformation added
+- upper body deformation added.
 
 - added hand collider to enhance the experience
 
@@ -34,7 +44,7 @@
 
 **NEW**
 
-- added New Torso and hands
+- added New Torso and hands.
 
 **CHANGE**
 
@@ -52,7 +62,7 @@
 
 **NEW**
 
-- added CompressionDetector to calculate pressure
+- added CompressionDetector to calculate pressure.
 
 - UI debug designed to determine how far the hands are from the correct area. (Then this UI will show the percentage error and how many presses it makes per minute)
 
@@ -62,15 +72,15 @@
 
 **NEW**
 
-- added mouth model
+- added mouth model.
 
 **FIX**
 
-- Sweat Texture fixed
+- Sweat Texture fixed.
 
 - The model was modified for the mouth model.
 
-- On-stage experience improvements have been made
+- On-stage experience improvements have been made.
 
 **V0.0.3.1    (10.07.2025)**
 
@@ -78,13 +88,13 @@
 
 - Fixed bugs in the human model.
 
-- Retextured the human model's clothing
+- Retextured the human model's clothing.
 
 **V0.0.3    (10.07.2025)**
 
 **NEW**
 
-- Added human model and adjusted character rig for it
+- Added human model and adjusted character rig for it.
 
 - The table was designed to avoid bending over to perform CPR on the human model.
 
@@ -92,7 +102,7 @@
 
 **NEW**
 
-- Added warning for using the hand tracking system
+- Added warning for using the hand tracking system.
 
 - The foundation for the UI has been laid.
   
